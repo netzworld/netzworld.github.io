@@ -1,13 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nicolas Randazzo</title>
-</head>
-<body>
-    <p>Nicolas Randazzo</p>
+    <title>Nicolas Randazzo – Resume Viewer</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 10px;
+            line-height: 1.5;
+            color: #333;
+        }
 
-    <embed src="refs/NicolasRandazzoResume.pdf" width="500" height="700" type="application/pdf">
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        button {
+            margin: 5px;
+            padding: 8px 16px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: #f5f5f5;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #e0e0e0;
+        }
+
+        h2 {
+            margin-top: 25px;
+            border-bottom: 2px solid #ccc;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        ul {
+            margin-top: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Nicolas Randazzo – Resume Viewer</h1>
+        <div>
+            <button onclick="loadResume('refs/NicolasRandazzoResume.pdf')">Data Engineering</button>
+            <button onclick="loadResume('refs/Resume_DataEngineering.pdf')">SWE</button>
+            <!-- <button onclick="loadResume('refs/Resume_Neuroinformatics.pdf')">Neuroinformatics</button>
+            <button onclick="loadResume('refs/Resume_Business.pdf')">Business</button> -->
+        </div>
+    </header>
+
+    <div id="resume-structured">Choose a version above…</div>
+
+    <!-- PDF.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <!-- Your parser -->
+    <script src="parse.js"></script>
 </body>
+
 </html>
