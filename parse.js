@@ -1,7 +1,7 @@
-const url = 'refs/NicolasRandazzoResume.pdf';
+const url = 'refs/NicolasRandazzoResumeSWE.pdf';
 
 // SECTION HEADINGS to look for in the PDF text
-const sections = ["Education", "Experience", "Projects", "Skills"];
+const sections = ["Education", "Experience", "Projects", "Technical Skills"];
 
 function structureResumeText(rawText) {
     let structured = {};
