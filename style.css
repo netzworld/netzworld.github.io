@@ -43,110 +43,109 @@ text-decoration: none;
 
 }
 
+:root{
+  --github-color: #181717;      /* primary GitHub brand black */
+  --github-edge-dark: #0f0f0f;  /* darker edge */
+  --github-edge-light: #2a2a2a; /* lighter edge */
+}
 
+/* ensure parent is a nice flex container and positioned */
 #git-content {
-margin-top: 90vh;
-margin-bottom: 0;
-justify-content: center;
-align-content: center;
-align-items: center;
+  margin-top: 90vh;
+  margin-bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
-
-#git-content a 
-{
-	font-size: 2vw;
-	display: flex;
-	margin: auto;
-	justify-content: center;
-	align-items: center;
-	color: green;
-}
-
-a.fa {
-	font-size: 40px;
-	color: #262626;
-	line-height: 80px;
-	transition: .5s;
-	padding-right: 14px;
-}
-
-a span {
-	padding:0;
-  margin:0;
-  position:absolute;
-  top: 30px;
-  color: #262626;
-  letter-spacing: 4px;
-  transition: .5s;
-  }
-
-#git-content a{
-text-decoration: none;
-  display:absolute;
-  display:block;
-  width:210px;
-  height:80px;
+/* main anchor (uses your existing visual treatment) */
+#git-content > a {
+  font-size: 2vw;
+  display: block;
+  position: relative;               /* needed for pseudo elements */
+  margin: auto;
+  width: 210px;
+  height: 80px;
   background: #fff;
-  text-align:left;
+  text-align: left;
   padding-left: 20px;
   transform: rotate(-30deg) skew(25deg) translate(0,0);
-  transition:.5s;
+  transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
   box-shadow: -20px 20px 10px rgba(0,0,0,.5);
+  color: #262626;
+  text-decoration: none;
+  overflow: hidden;
 }
 
-#git-content a:before {
-	content: '';
+/* metallic edges */
+#git-content > a:before {
+  content: '';
   position: absolute;
-  top:10px;
-  left:-20px;
-  height:100%;
-  width:20px;
+  top: 10px;
+  left: -20px;
+  height: 100%;
+  width: 20px;
   background: #b1b1b1;
-  transform: .5s;
   transform: rotate(0deg) skewY(-45deg);
-  }
-
-#git-content a:after {
-	content: '';
+  transition: background .25s ease;
+}
+#git-content > a:after {
+  content: '';
   position: absolute;
-  bottom:-20px;
-  left:-10px;
-  height:20px;
-  width:100%;
+  bottom: -20px;
+  left: -10px;
+  height: 20px;
+  width: 100%;
   background: #b1b1b1;
-  transform: .5s;
   transform: rotate(0deg) skewX(-45deg);
-  }
+  transition: background .25s ease;
+}
 
-  #git-content a:hover{
-	   transform: rotate(-30deg) skew(25deg) translate(20px,-15px);
+/* icon + label */
+#git-content > a .fa {
+  font-size: 40px;
+  color: #262626;
+  line-height: 80px;
+  transition: color .25s ease;
+  padding-right: 14px;
+}
+#git-content > a span {
+  position: absolute;
+  top: 30px;
+  left: 68px; /* nudged right of the icon */
+  color: #262626;
+  letter-spacing: 4px;
+  transition: color .25s ease;
+  margin: 0;
+  padding: 0;
+}
+
+/* hover/focus — apply GitHub color and make text/icon white */
+#git-content > a:hover,
+#git-content > a:focus {
+  transform: rotate(-30deg) skew(25deg) translate(20px,-15px);
   box-shadow: -50px 50px 50px rgba(0,0,0,.5);
-  }
-#git-content:hover .fa {
-	color: #fff;
+  background: var(--github-color);
+  color: #fff;
+  outline: none;
 }
-#git-content:hover span {
-	color: #fff;
+#git-content > a:hover:before,
+#git-content > a:focus:before {
+  background: var(--github-edge-dark);
 }
-
-#git-content:hover:nth-child(1) a{
-  background: #3b5998;
+#git-content > a:hover:after,
+#git-content > a:focus:after {
+  background: var(--github-edge-light);
 }
-#git-content:hover:nth-child(1) a:before{
-  background: #365492;
-}
-#git-content:hover:nth-child(1) a:after{
-  background: #4a69ad;
-}
-
-#git-content:hover:nth-child(2) a{
-  background: #00aced;
-}
-#git-content:hover:nth-child(2) a:before{
-  background: #097aa5;
-}
-#git-content:hover:nth-child(2) a:after{
-  background: #53b9e0;
+#git-content > a:hover .fa,
+#git-content > a:focus .fa,
+#git-content > a:hover span,
+#git-content > a:focus span {
+  color: #fff;
 }
 
+/* keyboard accessibility (visible focus) */
+#git-content > a:focus {
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.15), 0 0 0 6px rgba(24,23,23,0.25);
+}
