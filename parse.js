@@ -35,7 +35,9 @@ page.render(renderContext);
 	});
 
 }
-
+var random = Math.floor(Math.random()*2);
+// Random Resume each time the site loads!
+loadResume(random % 2 == 0 ? "refs/NicolasRandazzoResumeSWE.pdf" : "refs/NicolasRandazzoResumeDE.pdf");
 function downloadResume(element){
 	if(curResume == "") return;
 	const a = document.createElement("a");
