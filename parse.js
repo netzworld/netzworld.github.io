@@ -1,7 +1,7 @@
 var curResume = "";
 function loadResume(ref){
 	const resumeSec = document.getElementById("resume-structured");
-	
+	curResume = ref;	
 	const div = document.createElement("canvas");
 	div.id = "pdf-canvas";
 	resumeSec.appendChild(div);
@@ -12,7 +12,6 @@ function loadResume(ref){
 			var viewport = page.getViewport({ scale: scale, });
 			// Support HiDPI-screens.
 			var outputScale = window.devicePixelRatio || 1;
-
 			var canvas = document.getElementById('pdf-canvas');
 			var context = canvas.getContext('2d');
 
@@ -30,21 +29,20 @@ function loadResume(ref){
 			  transform: transform,
 			  viewport: viewport
 			};
+
 page.render(renderContext);
 		});
 	});
 
 }
 
-function parsePdfHtml(file){
-
-
-}
-
-
-
-function downloadResume(){
-
-
+function downloadResume(element){
+	if(curResume == "") return;
+	const a = document.createElement("a");
+	a.href = curResume;
+	element.appendChild(a);
+	a.click();
+	element.removeChild(a);
+console.log("downloading ", a.href);
 
 }

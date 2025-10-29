@@ -5,20 +5,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nicolas Randazzo – Resume Viewer</title>
+    <title>Nicolas Randazzo</title>
     <link rel="stylesheet" href="style.css" >
 </head>
 
 <body>
     <header>
-        <h1>Nicolas Randazzo – Resume Viewer</h1>
+	    <h1>Hi, I'm Nic.<br>
+		Use these buttons to view and download my resume.</h1>
     </header>
     <div>
         <button onclick="loadResume('refs/NicolasRandazzoResumeDE.pdf')">Data Engineering</button>
         <button onclick="loadResume('refs/NicolasRandazzoResumeSWE.pdf')">SWE</button>
-        <button onclick="downloadResume()">Download Current Resume</button>
+        <button onclick="downloadResume(this)">Download Current Resume</button>
     </div>
-    <div id="resume-structured">Choose a version above…
+    <div id="resume-structured">
+    </div>
+
+
+    <div id="git-content">
+	    <a href="https://github.com/netzworld" aria-label="github-link">
+		    <i class="fa fa-github" aria-hidden="true"></i>
+		    <span>
+		    My GitHub
+		    </span>
+	    </a>
     </div>
 
     <!-- PDF.js -->
